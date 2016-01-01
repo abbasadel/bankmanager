@@ -7,9 +7,9 @@
     <packaging>pom</packaging>
     <modules>
         <module>Core</module>
-        <module>Web</module>
         <module>Service</module>
         <module>Business</module>
+        <module>Web</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

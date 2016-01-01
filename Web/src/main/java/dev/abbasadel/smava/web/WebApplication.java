@@ -1,7 +1,15 @@
 package dev.abbasadel.smava.web;
 
+import dev.abbasadel.smava.business.managers.BankAccountManagerImpl;
+import dev.abbasadel.smava.business.managers.SessionManagerImpl;
 import dev.abbasadel.smava.business.managers.UserAccountManagerImpl;
+import dev.abbasadel.smava.core.managers.BankAccountManager;
+import dev.abbasadel.smava.core.managers.SessionManager;
 import dev.abbasadel.smava.core.managers.UserAccountManager;
+import dev.abbasadel.smava.core.services.BankAccountService;
+import dev.abbasadel.smava.core.services.UserAccountService;
+import dev.abbasadel.smava.service.BankAccountServiceImpl;
+import dev.abbasadel.smava.service.UserAccountServiceImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -19,10 +27,39 @@ public class WebApplication extends SpringBootServletInitializer {
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(WebApplication.class);
     }
+    
+    /***** SERVICES *****/
+    
+    @Bean
+    BankAccountService getBankAccountService(){
+        return new BankAccountServiceImpl();
+    }
+    
+    @Bean
+    UserAccountService getUserAccountService(){
+        return new UserAccountServiceImpl();
+    }
 
+    /***** MANAGERS *****/
+    
+    
     @Bean
     public UserAccountManager getUserAccountManager() {
         return new UserAccountManagerImpl();
     }
+    
+    @Bean
+    public SessionManager getSessionManager(){
+        return new SessionManagerImpl();
+    }
+    
+    @Bean
+    public BankAccountManager getAccountManager(){
+        return new BankAccountManagerImpl();
+    }
+    
+    
+    
+    
 
 }

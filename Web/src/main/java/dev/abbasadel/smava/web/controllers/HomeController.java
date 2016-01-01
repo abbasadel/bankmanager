@@ -32,7 +32,7 @@ public class HomeController {
         UserAccount userAccount = userAccountManager.getOrCreateUserAccountBySessionId(sessionId);        
         model.put("userAccount", userAccount);
         model.put("sessionId", sessionId);
-        
+                
         return "home";
     }
     

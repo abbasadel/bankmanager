@@ -5,15 +5,14 @@
  */
 package dev.abbasadel.smava.core.services;
 
-import dev.abbasadel.smava.core.models.BankAccount;
-import java.util.List;
+import dev.abbasadel.smava.core.models.UserAccount;
 
 /**
  *
  * @author abbasadel
  */
-public interface BankAccountService{
-    List<BankAccount> get(long userAccountId);
-    void add(BankAccount bankAccount, long userAccountId);
-    void delete(long bankAccountId);
+public interface UserAccountService {
+    UserAccount save(UserAccount userAccount);
+    UserAccount get(long id);
+    
 }

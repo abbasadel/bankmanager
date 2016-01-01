@@ -6,16 +6,17 @@
 package dev.abbasadel.smava.core.managers;
 
 import dev.abbasadel.smava.core.models.BankAccount;
+import java.util.List;
 
 /**
  *
  * @author abbasadel
  */
 public interface BankAccountManager {
-    BankAccount create(BankAccount bankAccount);
+    BankAccount save(BankAccount bankAccount);
     
     
-    BankAccount edit(BankAccount bankAccount);
+    BankAccount update(BankAccount bankAccount);
     
     /**
      * Deletes bank account
@@ -30,4 +31,12 @@ public interface BankAccountManager {
      * @return success of fail
      */
     boolean delete(String iban);
+    
+    /**
+     * generates default bank accounts
+     * @return 
+     */
+    List<BankAccount> generate();
+    
+    
 }
