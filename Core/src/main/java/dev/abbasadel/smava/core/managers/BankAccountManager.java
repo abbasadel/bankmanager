@@ -37,6 +37,9 @@ public interface BankAccountManager {
      * @return 
      */
     List<BankAccount> generate();
+
+    public List<BankAccount> getByUserAccountId(long id);
+
     
     
 }

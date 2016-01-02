@@ -19,12 +19,12 @@ public class BankAccount {
     
     
 
-    public BankAccount(String bic, String iban) {
+    public BankAccount(String iban, String bic ) {
         this.bic = bic;
         this.iban = iban;
     }
 
-    public BankAccount(long id, String bic, String iban) {
+    public BankAccount(long id, String iban, String bic) {
         this.id = id;
         this.bic = bic;
         this.iban = iban;

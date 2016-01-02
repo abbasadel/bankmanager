@@ -5,24 +5,28 @@
  */
 package dev.abbasadel.smava.service;
 
+import dev.abbasadel.smava.core.dao.UserAccountRepository;
 import dev.abbasadel.smava.core.models.UserAccount;
 import dev.abbasadel.smava.core.services.UserAccountService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
  * @author abbasadel
  */
-public class UserAccountServiceImpl implements UserAccountService{
+public class UserAccountServiceImpl implements UserAccountService {
+
+    @Autowired
+    UserAccountRepository userAccountRepository;
 
     @Override
     public UserAccount save(UserAccount userAccount) {
-        userAccount.setId(1);
-        return userAccount;
+        return userAccountRepository.save(userAccount);
     }
 
     @Override
     public UserAccount get(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return userAccountRepository.get(id);
     }
-    
+
 }

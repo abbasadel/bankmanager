@@ -9,6 +9,7 @@ import dev.abbasadel.smava.core.managers.BankAccountManager;
 import dev.abbasadel.smava.core.models.BankAccount;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.commons.lang3.RandomStringUtils;
 
 /**
  *
@@ -39,11 +40,25 @@ public class BankAccountManagerImpl implements BankAccountManager{
     @Override
     public List<BankAccount> generate() {
         List<BankAccount> list = new ArrayList<>(3);
-        list.add(new BankAccount("111", "XXX"));
-        list.add(new BankAccount("222", "YYY"));
-        list.add(new BankAccount("333", "ZZZ"));
+        list.add(new BankAccount(generateIban(), generateBic()));
+        list.add(new BankAccount(generateIban(), generateBic()));
+        list.add(new BankAccount(generateIban(), generateBic()));
         
         return list;
     }
+
+    @Override
+    public List<BankAccount> getByUserAccountId(long id) {
+        return generate();
+    }
+    
+    private String generateIban(){
+        return "DE" + RandomStringUtils.randomNumeric(20);
+    }
+    
+    private String generateBic(){
+        return RandomStringUtils.randomAlphabetic(8) + "XXX";
+    }
+    
     
 }

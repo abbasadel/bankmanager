@@ -13,9 +13,10 @@ import dev.abbasadel.smava.core.models.UserAccount;
  */
 public interface UserAccountManager {
     /**
-     * returns UserAccount if found by Session ID or creates new one
-     * @param sessionID
+     * create UserAccount
      * @return 
      */
-    UserAccount getOrCreateUserAccountBySessionId(String sessionID);
+    UserAccount create();
+    
+    UserAccount get(long id);
 }

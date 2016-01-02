@@ -14,30 +14,40 @@ import org.springframework.web.bind.annotation.RequestMethod;
  *
  * @author abbasadel
  */
-
 @Controller
 public class HomeController {
 
     Logger logger = Logger.getLogger(HomeController.class);
-    
+
+    private static final String SESSION_USER_ACCOUNT_ID = "SESSION_USER_ACCOUNT_ID";
+
     @Autowired
     UserAccountManager userAccountManager;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(Map<String, Object> model, HttpSession session) {
-        String sessionId = session.getId();
-        
-        UserAccount userAccount = userAccountManager.getOrCreateUserAccountBySessionId(sessionId);        
+
+        UserAccount userAccount;
+
+        Long userAccountId = getUserAccountIdFromSession(session);
+        if (userAccountId == null) {
+            userAccount = userAccountManager.create();
+            setUserAccountIdInSession(session, userAccount.getId());
+        } else {
+            userAccount = userAccountManager.get(userAccountId);
+        }
+
         model.put("userAccount", userAccount);
-        model.put("sessionId", sessionId);
-                
+
         return "home";
     }
-    
-    
-    @RequestMapping(value = "/abbas", method = RequestMethod.GET)
-    public String abbas() {
-        return "hi my name is abbas";
+
+    private Long getUserAccountIdFromSession(HttpSession session) {
+         return (Long) session.getAttribute(SESSION_USER_ACCOUNT_ID);
+    }
+
+    private void setUserAccountIdInSession(HttpSession session, long userAccountId) {
+        session.setAttribute(SESSION_USER_ACCOUNT_ID, userAccountId);
     }
 
 }

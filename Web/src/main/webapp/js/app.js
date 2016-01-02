@@ -5,6 +5,7 @@ if (typeof jQuery === "undefined") {
 
 /**
  * BankAccount Class
+ * @param  id
  * @param  iban
  * @param  bic
  * @returns 
@@ -13,6 +14,7 @@ function BankAccount (id, iban, bic){
     this.id = id;
     this.iban = iban;
     this.bic = bic;
+    
     this.validate  = function (){
         if(this.iban === "" || this.bic === ""){
             this.error = 'Empty IBAN/BIC';
@@ -34,14 +36,13 @@ function BankAccount (id, iban, bic){
     
     this.delete = function(){
         
-    }
-}
+    };
+};
 
+//// ---------------------
 
+app = {};
 
-app = {
-    
-}
 
 app.table = {
 
@@ -54,6 +55,7 @@ app.table = {
 
 
 app.table.record = {
+    
     create : function(element){
         
         bankAccount = this.extract(element);
@@ -117,7 +119,7 @@ app.table.record = {
         return element;
     }
     
-}
+};
 
 /**
  * 

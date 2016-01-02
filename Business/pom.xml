@@ -15,11 +15,6 @@
     
     <dependencies>
         
-         <dependency>
-            <groupId>dev.abbasadel.smava</groupId>
-            <artifactId>core</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
         
         <dependency>
             <groupId>dev.abbasadel.smava</groupId>
@@ -27,17 +22,15 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
         
-         <!--spring -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>4.2.4.RELEASE</version>
-        </dependency>
         
+        
+        
+        
+        <!-- for rundom string generation -->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>4.2.4.RELEASE</version>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.4</version>
         </dependency>
     </dependencies>
 </project>
