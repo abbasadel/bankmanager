@@ -14,7 +14,7 @@ import java.util.List;
 public class UserAccount {
     
     long id;
-    List<BankAccount> bankAccouts;
+    List<BankAccount> bankAccounts;
     
     
 
@@ -26,12 +26,12 @@ public class UserAccount {
         this.id = id;
     }
 
-    public List<BankAccount> getBankAccouts() {
-        return bankAccouts;
+    public List<BankAccount> getBankAccounts() {
+        return bankAccounts;
     }
 
-    public void setBankAccouts(List<BankAccount> bankAccouts) {
-        this.bankAccouts = bankAccouts;
+    public void setBankAccounts(List<BankAccount> bankAccounts) {
+        this.bankAccounts = bankAccounts;
     }
     
     

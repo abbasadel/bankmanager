@@ -37,7 +37,7 @@ public class UserAccountManagerImpl implements UserAccountManager{
         }else{
             userAccount = new UserAccount();
             userAccount =  userAccountService.save(userAccount);
-            userAccount.setBankAccouts(bankAccountManager.generate());
+            userAccount.setBankAccounts(bankAccountManager.generate());
             
             sessionManager.addUserAccountToSession(sessionID, userAccount);
         }
