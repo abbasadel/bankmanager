@@ -30,6 +30,7 @@ app.table.record = {
             }
             app.table.append(this.clone(bankAccount));
             this.override(element, new BankAccount()); // clear data
+            app.alert(bankAccount.message);
 
         } else {
             app.alert(bankAccount.error);
@@ -41,6 +42,7 @@ app.table.record = {
             app.alert(bankAccount.error);
             return;
         }
+        app.alert(bankAccount.message);
         element.remove();
     },
     
@@ -61,6 +63,7 @@ app.table.record = {
                 return;
             }
             this.readMode(element);
+            app.alert(bankAccount.message);
 
         } else {
             app.alert(bankAccount.error);

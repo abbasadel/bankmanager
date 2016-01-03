@@ -7,11 +7,9 @@ package dev.abbasadel.smava.business.managers;
 
 import dev.abbasadel.smava.core.managers.BankAccountManager;
 import dev.abbasadel.smava.core.models.BankAccount;
-import dev.abbasadel.smava.core.services.BankAccountRepository;
-import java.util.ArrayList;
-import java.util.List;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import dev.abbasadel.smava.core.services.BankAccountService;
 
 /**
  *
@@ -20,26 +18,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class BankAccountManagerImpl implements BankAccountManager{
     
     @Autowired
-    BankAccountRepository bankAccountRepository;
+    BankAccountService bankAccountService;
 
     @Override
     public BankAccount save(BankAccount bankAccount) {
-        return bankAccountRepository.save(bankAccount);
+        return bankAccountService.save(bankAccount);
     }
 
     @Override
     public BankAccount update(BankAccount bankAccount) {
-        return bankAccountRepository.save(bankAccount);
+        return bankAccountService.save(bankAccount);
     }
 
     @Override
     public void delete(BankAccount bankAccount) {
-        bankAccountRepository.delete(bankAccount);
+        bankAccountService.delete(bankAccount);
     }
 
     @Override
     public void delete(Long id) {
-        bankAccountRepository.delete(id);
+        bankAccountService.delete(id);
     }
 
     @Override
@@ -58,14 +56,14 @@ public class BankAccountManagerImpl implements BankAccountManager{
 
     @Override
     public BankAccount get(Long id) {
-        return bankAccountRepository.findOne(id);
+        return bankAccountService.findOne(id);
     }
     
     
     @Override
     public boolean exists(BankAccount bankAccount){
         //worest implementation ever
-        for(BankAccount ba : bankAccountRepository.findAll()){
+        for(BankAccount ba : bankAccountService.findAll()){
             if(ba.equals(bankAccount)){
                 return true;
             }

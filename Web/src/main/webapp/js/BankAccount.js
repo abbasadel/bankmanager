@@ -60,8 +60,9 @@ BankAccount.prototype.delegateError = function (ajaxResponse) {
         this.error = ajaxResponse.message;
         return false;
     }
+    this.message = ajaxResponse.message;
     return true;
-}
+};
 
 
  BankAccount.prototype.sendAjax = function(url, type, data) {

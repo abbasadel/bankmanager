@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dev.abbasadel.smava.web;
 
 import java.io.Serializable;
@@ -16,7 +11,7 @@ public class JsonResponse implements Serializable {
 
     private static final long serialVersionUID = -6068183407884308855L;
 
-    HttpStatus staus = HttpStatus.OK;
+    HttpStatus status = HttpStatus.OK;
     String message;
     Object data;
 
@@ -24,15 +19,15 @@ public class JsonResponse implements Serializable {
         super();
     }
 
-    public JsonResponse(HttpStatus staus, String message) {
+    public JsonResponse(HttpStatus status, String message) {
         super();
-        this.staus = staus;
+        this.status = status;
         this.message = message;
     }
     
-    public JsonResponse(HttpStatus staus, String message, Object data) {
+    public JsonResponse(HttpStatus status, String message, Object data) {
         super();
-        this.staus = staus;
+        this.status = status;
         this.message = message;
         this.data = data;
     }
@@ -42,12 +37,12 @@ public class JsonResponse implements Serializable {
         this.message = message;
     }
 
-    public HttpStatus getStaus() {
-        return staus;
+    public HttpStatus getStatus() {
+        return status;
     }
 
-    public void setStaus(HttpStatus staus) {
-        this.staus = staus;
+    public void setStatus(HttpStatus status) {
+        this.status = status;
     }
 
     public String getMessage() {
