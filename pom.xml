@@ -8,8 +8,9 @@
     <modules>
         <module>Core</module>
         <module>Service</module>
-        <module>Business</module>
         <module>Web</module>
+        <module>External</module>
+        <module>Business</module>
     </modules>
     
     <properties>
