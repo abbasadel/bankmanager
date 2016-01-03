@@ -75,7 +75,6 @@
                     <td><input type="text" class="form-control bic_record" placeholder="BIC"></td>
                     <td>
                         <input type="hidden" class="form-control id_record" >
-                        <!--<input type="hidden" id="sessionid" value="${sessionid}"  />-->
                         <button type="button" class="btn btn-default btn-small createBtn">Add New Account</button>
                     </td>
                 </tr>
@@ -88,6 +87,7 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity = "sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin = "anonymous" ></script>
+        <script src="<c:url value="/js/BankAccount.js" />" /></script>
         <script src="<c:url value="/js/app.js" />" /></script>
 
 </body>

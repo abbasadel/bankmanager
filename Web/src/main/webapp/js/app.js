@@ -1,68 +1,4 @@
-//Make sure jQuery has been loaded before app.js
-if (typeof jQuery === "undefined") {
-    throw new Error("jQuery is required");
-}
 
-/**
- * BankAccount Class
- * @param  id
- * @param  iban
- * @param  bic
- * @returns 
- */
-function BankAccount(id, iban, bic) {
-    //make sure that no id with 0
-    if(id > 0 ){
-       this.id = id;
-    }
-    this.iban = iban;
-    this.bic = bic;
-
-    this.validate = function () {
-        if (this.iban === "" || this.bic === "") {
-            this.error = 'Empty IBAN/BIC';
-            return false;
-        }
-
-        return true;
-    };
-    
-
-    this.save = function () {
-        console.log('saved');
-        me = this;
-
-        $.ajax({
-            type: 'POST',
-            url: '/banks/accounts/',
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            data: JSON.stringify(this),
-            async: false,
-            success: function (data) {
-                console.log("success");
-                me.id = data.data.id;
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log("Error");
-                console.log("textStatus: " + textStatus.value);
-                console.log(jqXHR.status + " " + jqXHR.responseText);
-                alert("This is embarasing, pls try again later.");
-            }
-        });
-    };
-
-
-    this.update = function () {
-
-    };
-
-
-    this.delete = function () {
-
-    };
-}
-;
 
 //// ---------------------
 
@@ -95,6 +31,8 @@ app.table.record = {
         }
     },
     delete: function (element) {
+        bankAccount = this.extract(element);
+        bankAccount.delete();
         element.remove();
     },
     edit: function (element) {
@@ -105,7 +43,15 @@ app.table.record = {
         console.log(bankAccount);
     },
     update: function (element) {
+        bankAccount = this.extract(element);
+        if (bankAccount.validate()) {
+            bankAccount.update();
+            this.cancel(element);
 
+        } else {
+            alert(bankAccount.error);
+        }
+        
     },
     cancel: function (element) {
         element.removeClass('editMode');

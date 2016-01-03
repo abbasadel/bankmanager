@@ -33,13 +33,13 @@ public class BankAccountManagerImpl implements BankAccountManager{
     }
 
     @Override
-    public boolean delete(BankAccount bankAccount) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void delete(BankAccount bankAccount) {
+        bankAccountRepository.delete(bankAccount);
     }
 
     @Override
-    public boolean delete(String iban) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void delete(Long id) {
+        bankAccountRepository.delete(id);
     }
 
     @Override
@@ -54,6 +54,11 @@ public class BankAccountManagerImpl implements BankAccountManager{
     
     private String randomBic(){
         return RandomStringUtils.randomAlphabetic(8) + "XXX";
+    }
+
+    @Override
+    public BankAccount get(Long id) {
+        return bankAccountRepository.findOne(id);
     }
     
     

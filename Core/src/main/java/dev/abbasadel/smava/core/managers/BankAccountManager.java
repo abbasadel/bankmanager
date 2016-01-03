@@ -13,6 +13,9 @@ import java.util.List;
  * @author abbasadel
  */
 public interface BankAccountManager {
+    
+    BankAccount get(Long id);
+    
     BankAccount save(BankAccount bankAccount);
     
     
@@ -23,14 +26,14 @@ public interface BankAccountManager {
      * @param bankAccount
      * @return success of fail
      */
-    boolean delete(BankAccount bankAccount);
+    void delete(BankAccount bankAccount);
     
     /**
      * Deletes bank account by IBAN
      * @param iban
      * @return success of fail
      */
-    boolean delete(String iban);
+    void delete(Long id);
     
     /**
      * generates dummy bank account
