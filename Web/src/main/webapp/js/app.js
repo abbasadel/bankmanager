@@ -30,6 +30,7 @@ function BankAccount(id, iban, bic) {
 
     this.save = function () {
         console.log('saved');
+        me = this;
 
         $.ajax({
             type: 'POST',
@@ -37,9 +38,10 @@ function BankAccount(id, iban, bic) {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             data: JSON.stringify(this),
-            async: true,
+            async: false,
             success: function (data) {
-                console.log(success);
+                console.log("success");
+                me.id = data.data.id;
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log("Error");

@@ -58,7 +58,7 @@
                     <td width="40%"><input type="text" class="form-control iban_record" placeholder="IBAN" value="${account.iban}" readonly="readonly"></td>
                         <td width="35%"><input type="text" class="form-control bic_record" placeholder="BIC" value="${account.bic}" readonly="readonly"></td>
                         <td>
-                            <input type="hidden" class="form-control id_record" value="${account.id}">
+                            <input type="hidden" class="form-control id_record" value="">
                             <div class="btn-group" role="group" aria-label="...">
                                 <button type="button" class="btn btn-default editBtn">Edit</button>
                                 <button type="button" class="btn btn-default deleteBtn">Delete</button>
