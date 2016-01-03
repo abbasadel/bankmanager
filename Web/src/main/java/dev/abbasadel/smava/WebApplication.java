@@ -1,23 +1,19 @@
-package dev.abbasadel.smava.web;
+package dev.abbasadel.smava;
 
 import dev.abbasadel.smava.business.managers.BankAccountManagerImpl;
 import dev.abbasadel.smava.business.managers.UserAccountManagerImpl;
-import dev.abbasadel.smava.core.dao.UserAccountRepository;
 import dev.abbasadel.smava.core.managers.BankAccountManager;
-import dev.abbasadel.smava.core.managers.SessionManager;
 import dev.abbasadel.smava.core.managers.UserAccountManager;
-import dev.abbasadel.smava.core.services.BankAccountService;
-import dev.abbasadel.smava.core.services.UserAccountService;
-import dev.abbasadel.smava.dao.InMemoryUserAccountRepository;
-import dev.abbasadel.smava.service.BankAccountServiceImpl;
-import dev.abbasadel.smava.service.UserAccountServiceImpl;
+import jdk.nashorn.internal.runtime.UserAccessorProperty;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
+//@EnableJpaRepositories(basePackages = {"dev.abbasadel.smava.services"})
 public class WebApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
@@ -29,18 +25,6 @@ public class WebApplication extends SpringBootServletInitializer {
         return application.sources(WebApplication.class);
     }
     
-    /***** SERVICES *****/
-    
-    @Bean
-    BankAccountService getBankAccountService(){
-        return new BankAccountServiceImpl();
-    }
-    
-    @Bean
-    UserAccountService getUserAccountService(){
-        return new UserAccountServiceImpl();
-    }
-
     /***** MANAGERS *****/
     
     
@@ -57,10 +41,16 @@ public class WebApplication extends SpringBootServletInitializer {
     
     /******* REPOSITORY ******/
     
-    @Bean
-    public UserAccountRepository getUserAccountRepository(){
-        return new InMemoryUserAccountRepository();
-    }
+//    @Bean
+//    public UserAccountRepository getUserAccountRepository(){
+//        return new InMemoryUserAccountRepository();
+//    }
+//    
+    
+//     @Bean
+//    public BankAccountRepository getBankAccountRepository(){
+//        return new InMemoryUserAccountRepository();
+//    }
     
     
     

@@ -5,38 +5,51 @@
  */
 package dev.abbasadel.smava.core.models;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author abbasadel
  */
-public class BankAccount {
-    long id;
+@Entity
+@Table(name = "bank_accounts")
+public class BankAccount implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    Long id;
+
+    @Column(nullable = false)
     String bic;
+
+    @Column(nullable = false)
     String iban;
 
     public BankAccount() {
     }
-    
-    
 
-    public BankAccount(String iban, String bic ) {
+    public BankAccount(String iban, String bic) {
         this.bic = bic;
         this.iban = iban;
     }
 
-    public BankAccount(long id, String iban, String bic) {
+    public BankAccount(Long id, String iban, String bic) {
         this.id = id;
         this.bic = bic;
         this.iban = iban;
     }
-    
-    
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -55,6 +68,5 @@ public class BankAccount {
     public void setIban(String iban) {
         this.iban = iban;
     }
-    
-    
+
 }

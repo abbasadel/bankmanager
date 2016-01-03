@@ -14,7 +14,7 @@
     </properties>
     
     <dependencies>
-        
+           
         
         <dependency>
             <groupId>dev.abbasadel.smava</groupId>
@@ -23,7 +23,11 @@
         </dependency>
         
         
-        
+         <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <scope>runtime</scope>
+        </dependency>
         
         
         <!-- for rundom string generation -->

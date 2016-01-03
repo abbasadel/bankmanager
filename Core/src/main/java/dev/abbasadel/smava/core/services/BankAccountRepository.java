@@ -6,14 +6,14 @@
 package dev.abbasadel.smava.core.services;
 
 import dev.abbasadel.smava.core.models.BankAccount;
-import java.util.List;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author abbasadel
  */
-public interface BankAccountService{
-    List<BankAccount> get(long userAccountId);
-    void add(BankAccount bankAccount, long userAccountId);
-    void delete(long bankAccountId);
+@Repository
+public interface BankAccountRepository extends CrudRepository<BankAccount, Long>{
+    
 }

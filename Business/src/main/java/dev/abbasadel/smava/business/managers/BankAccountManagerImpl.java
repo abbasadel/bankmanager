@@ -7,15 +7,20 @@ package dev.abbasadel.smava.business.managers;
 
 import dev.abbasadel.smava.core.managers.BankAccountManager;
 import dev.abbasadel.smava.core.models.BankAccount;
+import dev.abbasadel.smava.core.services.BankAccountRepository;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
  * @author abbasadel
  */
 public class BankAccountManagerImpl implements BankAccountManager{
+    
+    @Autowired
+    BankAccountRepository bankAccountRepository;
 
     @Override
     public BankAccount save(BankAccount bankAccount) {
@@ -39,10 +44,13 @@ public class BankAccountManagerImpl implements BankAccountManager{
 
     @Override
     public List<BankAccount> generate() {
-        List<BankAccount> list = new ArrayList<>(3);
-        list.add(new BankAccount(generateIban(), generateBic()));
-        list.add(new BankAccount(generateIban(), generateBic()));
-        list.add(new BankAccount(generateIban(), generateBic()));
+        int times = 3;
+        List<BankAccount> list = new ArrayList<>(times);
+        for(int i=0; i<times; i++){
+            BankAccount dummyBankAccount = new BankAccount(generateIban(), generateBic());
+            //dummyBankAccount = bankAccountRepository.save(dummyBankAccount);
+            list.add(dummyBankAccount);
+        }
         
         return list;
     }

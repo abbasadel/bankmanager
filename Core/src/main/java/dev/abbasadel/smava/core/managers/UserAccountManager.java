@@ -18,5 +18,5 @@ public interface UserAccountManager {
      */
     UserAccount create();
     
-    UserAccount get(long id);
+    UserAccount get(Long id);
 }

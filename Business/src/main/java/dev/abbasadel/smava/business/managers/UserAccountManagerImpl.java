@@ -8,7 +8,7 @@ package dev.abbasadel.smava.business.managers;
 import dev.abbasadel.smava.core.managers.BankAccountManager;
 import dev.abbasadel.smava.core.managers.UserAccountManager;
 import dev.abbasadel.smava.core.models.UserAccount;
-import dev.abbasadel.smava.core.services.UserAccountService;
+import dev.abbasadel.smava.core.services.UserAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -18,7 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class UserAccountManagerImpl implements UserAccountManager {
 
     @Autowired
-    UserAccountService userAccountService;
+    UserAccountRepository userAccountRepository;
 
     @Autowired
     BankAccountManager bankAccountManager;
@@ -26,18 +26,15 @@ public class UserAccountManagerImpl implements UserAccountManager {
     @Override
     public UserAccount create() {
         UserAccount userAccount = new UserAccount();
-                userAccount.setBankAccounts(bankAccountManager.generate());
-        userAccount = userAccountService.save(userAccount);
+        userAccount.setBankAccounts(bankAccountManager.generate());
+        userAccount = userAccountRepository.save(userAccount);
 
         return userAccount;
     }
 
     @Override
-    public UserAccount get(long id) {
-         UserAccount userAccount = userAccountService.get(id);
-//         userAccount.setBankAccounts(bankAccountManager.getByUserAccountId(id));
-         
-         return userAccount;
+    public UserAccount get(Long id) {
+        return userAccountRepository.findOne(id);
     }
 
 }
