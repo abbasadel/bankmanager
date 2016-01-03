@@ -33,6 +33,6 @@ public class GlobalJsonExceptionHandler {
     public @ResponseBody
     JsonResponse handleRuntimeException(Exception e) {
         logger.error(e.getMessage(), e);
-        return JsonResponse.make(e.getMessage(), HttpStatus.EXPECTATION_FAILED);
+        return JsonResponse.make("Error Happened, Please try again later.", HttpStatus.EXPECTATION_FAILED);
     }
 }
