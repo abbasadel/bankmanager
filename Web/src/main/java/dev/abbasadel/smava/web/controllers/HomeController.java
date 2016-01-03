@@ -38,6 +38,7 @@ public class HomeController {
         }
 
         model.put("userAccount", userAccount);
+        model.put("sessionid", session.getId());
 
         return "home";
     }

@@ -33,12 +33,10 @@ public interface BankAccountManager {
     boolean delete(String iban);
     
     /**
-     * generates default bank accounts
+     * generates dummy bank account
      * @return 
      */
-    List<BankAccount> generate();
-
-    public List<BankAccount> getByUserAccountId(long id);
+    BankAccount generate();
 
     
     

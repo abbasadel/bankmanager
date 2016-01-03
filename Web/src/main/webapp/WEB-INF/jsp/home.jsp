@@ -74,7 +74,8 @@
                     <td><input type="text" class="form-control iban_record" placeholder="IBAN"></td>
                     <td><input type="text" class="form-control bic_record" placeholder="BIC"></td>
                     <td>
-                        <input type="hidden" class="form-control id_record" value="0">
+                        <input type="hidden" class="form-control id_record" >
+                        <!--<input type="hidden" id="sessionid" value="${sessionid}"  />-->
                         <button type="button" class="btn btn-default btn-small createBtn">Add New Account</button>
                     </td>
                 </tr>

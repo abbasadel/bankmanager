@@ -7,8 +7,10 @@ package dev.abbasadel.smava.business.managers;
 
 import dev.abbasadel.smava.core.managers.BankAccountManager;
 import dev.abbasadel.smava.core.managers.UserAccountManager;
+import dev.abbasadel.smava.core.models.BankAccount;
 import dev.abbasadel.smava.core.models.UserAccount;
 import dev.abbasadel.smava.core.services.UserAccountRepository;
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -26,8 +28,15 @@ public class UserAccountManagerImpl implements UserAccountManager {
     @Override
     public UserAccount create() {
         UserAccount userAccount = new UserAccount();
-        userAccount.setBankAccounts(bankAccountManager.generate());
         userAccount = userAccountRepository.save(userAccount);
+        userAccount.setBankAccounts(new ArrayList<>(3));
+        
+        for(int i=0; i<3; i++){
+            BankAccount bankAccount = bankAccountManager.generate();
+            bankAccount.setUserAccount(userAccount);
+            bankAccount = bankAccountManager.save(bankAccount);
+            userAccount.getBankAccounts().add(bankAccount);
+        }
 
         return userAccount;
     }

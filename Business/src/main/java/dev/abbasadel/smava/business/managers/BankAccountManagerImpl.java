@@ -24,12 +24,12 @@ public class BankAccountManagerImpl implements BankAccountManager{
 
     @Override
     public BankAccount save(BankAccount bankAccount) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return bankAccountRepository.save(bankAccount);
     }
 
     @Override
     public BankAccount update(BankAccount bankAccount) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return bankAccountRepository.save(bankAccount);
     }
 
     @Override
@@ -43,28 +43,16 @@ public class BankAccountManagerImpl implements BankAccountManager{
     }
 
     @Override
-    public List<BankAccount> generate() {
-        int times = 3;
-        List<BankAccount> list = new ArrayList<>(times);
-        for(int i=0; i<times; i++){
-            BankAccount dummyBankAccount = new BankAccount(generateIban(), generateBic());
-            //dummyBankAccount = bankAccountRepository.save(dummyBankAccount);
-            list.add(dummyBankAccount);
-        }
-        
-        return list;
+    public BankAccount generate() {
+            return new BankAccount(randomIban(), randomBic());
     }
 
-    @Override
-    public List<BankAccount> getByUserAccountId(long id) {
-        return generate();
-    }
-    
-    private String generateIban(){
+   
+    private String randomIban(){
         return "DE" + RandomStringUtils.randomNumeric(20);
     }
     
-    private String generateBic(){
+    private String randomBic(){
         return RandomStringUtils.randomAlphabetic(8) + "XXX";
     }
     
