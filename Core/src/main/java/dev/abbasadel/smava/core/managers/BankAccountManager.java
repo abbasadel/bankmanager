@@ -13,34 +13,36 @@ import java.util.List;
  * @author abbasadel
  */
 public interface BankAccountManager {
-    
+
     BankAccount get(Long id);
-    
+
     BankAccount save(BankAccount bankAccount);
-    
-    
+
     BankAccount update(BankAccount bankAccount);
-    
+
     /**
      * Deletes bank account
+     *
      * @param bankAccount
      * @return success of fail
      */
     void delete(BankAccount bankAccount);
-    
+
     /**
      * Deletes bank account by IBAN
+     *
      * @param iban
      * @return success of fail
      */
     void delete(Long id);
-    
+
     /**
      * generates dummy bank account
-     * @return 
+     *
+     * @return
      */
     BankAccount generate();
 
-    
-    
-}
+    boolean exists(BankAccount bankAccount);
+
+    }

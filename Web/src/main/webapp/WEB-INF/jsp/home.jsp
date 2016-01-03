@@ -38,8 +38,8 @@
                 </tr>  
                 <c:forEach items="${userAccount.bankAccounts}" var="account">
                     <tr class="readMode">
-                        <td width="40%"><input type="text" class="form-control iban_record" placeholder="IBAN" value="${account.iban}" readonly="readonly"></td>
-                        <td width="35%"><input type="text" class="form-control bic_record" placeholder="BIC" value="${account.bic}" readonly="readonly"></td>
+                        <td width="40%"><input type="text" class="form-control iban_record" placeholder="IBAN" value="${account.iban}" readonly="readonly" maxlength="22"></td>
+                        <td width="35%"><input type="text" class="form-control bic_record" placeholder="BIC" value="${account.bic}" readonly="readonly" maxlength="11"></td>
                         <td>
                             <input type="hidden" class="form-control id_record" value="${account.id}">
                             <div class="btn-group" role="group" aria-label="...">
@@ -55,8 +55,8 @@
                     </tr>
                 </c:forEach>
                 <tr class="readMode hidden" id="emptyRecord">
-                    <td width="40%"><input type="text" class="form-control iban_record" placeholder="IBAN" value="${account.iban}" readonly="readonly"></td>
-                        <td width="35%"><input type="text" class="form-control bic_record" placeholder="BIC" value="${account.bic}" readonly="readonly"></td>
+                    <td width="40%"><input type="text" class="form-control iban_record" placeholder="IBAN" value="${account.iban}" readonly="readonly" maxlength="22"></td>
+                        <td width="35%"><input type="text" class="form-control bic_record" placeholder="BIC" value="${account.bic}" readonly="readonly" maxlength="11"></td>
                         <td>
                             <input type="hidden" class="form-control id_record" value="">
                             <div class="btn-group" role="group" aria-label="...">
@@ -71,8 +71,8 @@
                         </td>
                 </tr>
                 <tr>
-                    <td><input type="text" class="form-control iban_record" placeholder="IBAN"></td>
-                    <td><input type="text" class="form-control bic_record" placeholder="BIC"></td>
+                    <td><input type="text" class="form-control iban_record" placeholder="IBAN" maxlength="22" ></td>
+                    <td><input type="text" class="form-control bic_record" placeholder="BIC" maxlength="11"></td>
                     <td>
                         <input type="hidden" class="form-control id_record" >
                         <button type="button" class="btn btn-default btn-small createBtn">Add New Account</button>

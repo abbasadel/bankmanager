@@ -114,9 +114,7 @@ public class BankAccount implements Serializable {
         if (!Objects.equals(this.iban, other.iban)) {
             return false;
         }
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
+        
         return true;
     }
 

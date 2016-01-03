@@ -1,64 +1,83 @@
 
-
-//// ---------------------
-
 app = {};
 
-app.sessionid = function(){
-    return $('#sessionid').val();
-};
+app.alert = function(msg){
+    alert(msg);
+}
 
 app.table = {
+    /**
+     * append element to table
+     * @param DOM element
+     */
     append: function (element) {
-        console.log(element);
         $('#bankAccountList  tr:last').before(element);
     }
 };
 
-
+/**
+ * handle table events/actions
+ */
 app.table.record = {
     create: function (element) {
 
         bankAccount = this.extract(element);
 
         if (bankAccount.validate()) {
-            bankAccount.save();
+            if(bankAccount.save() === false){
+                app.alert(bankAccount.error);
+                return;
+            }
             app.table.append(this.clone(bankAccount));
             this.override(element, new BankAccount()); // clear data
 
         } else {
-            alert(bankAccount.error);
+            app.alert(bankAccount.error);
         }
     },
     delete: function (element) {
         bankAccount = this.extract(element);
-        bankAccount.delete();
+        if(bankAccount.delete() === false){
+            app.alert(bankAccount.error);
+            return;
+        }
         element.remove();
     },
+    
     edit: function (element) {
         bankAccount = this.extract(element);
+        app.bankAccountCopy = jQuery.extend({}, bankAccount);
+
         element.addClass('editMode');
         element.removeClass('readMode');
         element.find('input').attr("readonly", false);
-        console.log(bankAccount);
     },
+    
     update: function (element) {
         bankAccount = this.extract(element);
         if (bankAccount.validate()) {
-            bankAccount.update();
-            this.cancel(element);
+            if (bankAccount.update() === false) {
+                app.alert(bankAccount.error);
+                return;
+            }
+            this.readMode(element);
 
         } else {
-            alert(bankAccount.error);
+            app.alert(bankAccount.error);
         }
         
     },
     cancel: function (element) {
+        this.override(element, app.bankAccountCopy);
+
+    },
+    
+    readMode : function(element){
         element.removeClass('editMode');
         element.addClass('readMode');
         element.find('input').attr("readonly", true);
-
     },
+    
     clone: function (bankAccount) {
         element = $('#emptyRecord').clone(true);
         element.removeClass('hidden');

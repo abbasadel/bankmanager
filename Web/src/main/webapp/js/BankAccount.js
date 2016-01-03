@@ -3,6 +3,8 @@ if (typeof jQuery === "undefined") {
     throw new Error("jQuery is required");
 }
 
+var baseUrl = '/banks/accounts/';
+
 /**
  * BankAccount Class
  * @param  id
@@ -21,83 +23,80 @@ function BankAccount(id, iban, bic) {
 
 BankAccount.prototype.validate = function () {
     if (this.iban === "" || this.bic === "") {
-        this.error = 'Empty IBAN/BIC';
+        this.error = 'Empty IBAN or BIC';
+        return false;
+    }
+
+    if (this.iban.length !== 22) {
+        this.error = "Invalid IBAN";
+        return false;
+    }
+
+    if (this.bic.length !== 11) {
+        this.error = "Invalid BIC";
         return false;
     }
 
     return true;
 };
 
-
 BankAccount.prototype.save = function () {
-    console.log('saved');
-    me = this;
+    return this.delegateError(this.sendAjax(baseUrl, 'POST', this));
 
-    $.ajax({
-        type: 'POST',
-        url: '/banks/accounts/',
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        data: JSON.stringify(this),
-        async: false,
-        success: function (response) {
-            console.log("success");
-            me.id = response.data.id;
-            alert(response.message);
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log("Error");
-            console.log("textStatus: " + textStatus.value);
-            console.log(jqXHR.status + " " + jqXHR.responseText);
-
-        }
-    });
 };
 
 
 BankAccount.prototype.update = function () {
-    me = this;
-
-    $.ajax({
-        type: 'PUT',
-        url: '/banks/accounts/' + me.id,
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        data: JSON.stringify(this),
-        async: false,
-        success: function (response) {
-            console.log("success");
-            alert(response.message);
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log("Error");
-            console.log("textStatus: " + textStatus.value);
-            console.log(jqXHR.status + " " + jqXHR.responseText);
-
-        }
-    });
+    return this.delegateError(this.sendAjax(baseUrl + this.id, 'PUT', this));
 };
 
 
 BankAccount.prototype.delete = function () {
-    me = this;
+    return this.delegateError(this.sendAjax(baseUrl + this.id, 'DELETE', this));
+};
+
+BankAccount.prototype.delegateError = function (ajaxResponse) {
+    if (ajaxResponse.status !== 'OK') {
+        this.error = ajaxResponse.message;
+        return false;
+    }
+    return true;
+}
+
+
+ BankAccount.prototype.sendAjax = function(url, type, data) {
+    var ajaxResponse;
 
     $.ajax({
-        type: 'DELETE',
-        url: '/banks/accounts/' + me.id,
+        type: type,
+        url: url,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        data: JSON.stringify(this),
+        data: JSON.stringify(data),
         async: false,
         success: function (response) {
-            console.log("success");
-            alert(response.message);
+            if (response.data !== null) {
+                data.id = response.data.id;
+            }
+
+            ajaxResponse = response;
+
+            //notifyUser(response.message);
         },
-        error: function (jqXHR, textStatus, errorThrown) {
+        error: function (response, textStatus) {
             console.log("Error");
-            console.log("textStatus: " + textStatus.value);
-            console.log(jqXHR.status + " " + jqXHR.responseText);
+            console.log(response.status + " " + response.error);
+//            notifyUser(response.message)
+            ajaxResponse = response;
 
         }
     });
-};
+
+    return ajaxResponse;
+
+}
+
+function notifyUser(message) {
+    alert(message);
+}
+

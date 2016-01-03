@@ -5,6 +5,7 @@
  */
 package dev.abbasadel.smava.web.controllers;
 
+import dev.abbasadel.smava.core.exceptions.InvalidBankAccountException;
 import dev.abbasadel.smava.core.managers.BankAccountManager;
 import dev.abbasadel.smava.core.managers.UserAccountManager;
 import dev.abbasadel.smava.core.models.BankAccount;
@@ -37,6 +38,10 @@ public class BankAccountController {
     public JsonResponse add(@RequestBody BankAccount bankAccount, HttpSession session) {
 
         Long currentUserAccountId = (Long) session.getAttribute("SESSION_USER_ACCOUNT_ID");
+        
+        if(bankAccountManager.exists(bankAccount)){
+            throw new InvalidBankAccountException("Bank Account Already Exists");
+        }
 
         if (currentUserAccountId != null) {
             UserAccount userAccount = userAccountManager.get(currentUserAccountId);

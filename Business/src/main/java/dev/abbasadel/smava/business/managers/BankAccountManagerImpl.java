@@ -53,12 +53,25 @@ public class BankAccountManagerImpl implements BankAccountManager{
     }
     
     private String randomBic(){
-        return RandomStringUtils.randomAlphabetic(8) + "XXX";
+        return RandomStringUtils.randomAlphabetic(8).toUpperCase() + "XXX";
     }
 
     @Override
     public BankAccount get(Long id) {
         return bankAccountRepository.findOne(id);
+    }
+    
+    
+    @Override
+    public boolean exists(BankAccount bankAccount){
+        //worest implementation ever
+        for(BankAccount ba : bankAccountRepository.findAll()){
+            if(ba.equals(bankAccount)){
+                return true;
+            }
+        }
+        
+        return false;
     }
     
     
