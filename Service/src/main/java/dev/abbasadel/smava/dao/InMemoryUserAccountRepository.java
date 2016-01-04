@@ -5,12 +5,12 @@
  */
 package dev.abbasadel.smava.dao;
 
-import dev.abbasadel.smava.core.services.UserAccountRepository;
 import dev.abbasadel.smava.core.models.BankAccount;
 import dev.abbasadel.smava.core.models.UserAccount;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
+import dev.abbasadel.smava.core.services.UserAccountService;
 
 /**
  *

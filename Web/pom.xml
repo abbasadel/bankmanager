@@ -12,13 +12,13 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>Web</name>
+    <name>Smava-Web</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-  <tomcat.version>8.0.3</tomcat.version>
+        <tomcat.version>8.0.3</tomcat.version>
 
     </properties>
     
@@ -30,7 +30,7 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
         
-         <dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <exclusions>
@@ -40,7 +40,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -57,6 +56,8 @@
             <artifactId>javax.servlet.jsp.jstl</artifactId>
             <version>1.2.2</version>
         </dependency>
+        
+
     </dependencies>
 
     <build>
@@ -66,7 +67,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>1.3.1.RELEASE</version>
             </plugin>
 
             <!-- configure war plugin to skip webxml -->

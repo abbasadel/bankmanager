@@ -9,9 +9,10 @@ import dev.abbasadel.smava.core.managers.BankAccountManager;
 import dev.abbasadel.smava.core.managers.UserAccountManager;
 import dev.abbasadel.smava.core.models.BankAccount;
 import dev.abbasadel.smava.core.models.UserAccount;
-import dev.abbasadel.smava.core.services.UserAccountRepository;
+import dev.abbasadel.smava.core.services.LoggerService;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
+import dev.abbasadel.smava.core.services.UserAccountService;
 
 /**
  *
@@ -20,15 +21,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class UserAccountManagerImpl implements UserAccountManager {
 
     @Autowired
-    UserAccountRepository userAccountRepository;
+    UserAccountService userAccountRepository;
 
     @Autowired
     BankAccountManager bankAccountManager;
+    
+    @Autowired
+    LoggerService loggerService;
 
     @Override
     public UserAccount create() {
         UserAccount userAccount = new UserAccount();
         userAccount = userAccountRepository.save(userAccount);
+        
+        loggerService.log("New User created with id" + userAccount.getId());
+        
         userAccount.setBankAccounts(new ArrayList<>(3));
         
         for(int i=0; i<3; i++){

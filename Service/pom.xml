@@ -7,6 +7,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <artifactId>Service</artifactId>
+    <name>Smava-Service</name>
     <packaging>jar</packaging>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -18,5 +19,19 @@
             <artifactId>Core</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        
+    
+        
+        <!-- JMS dependancies -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jms</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-core</artifactId>
+            <version>5.4.3</version>
+        </dependency>
+
     </dependencies>
 </project>
