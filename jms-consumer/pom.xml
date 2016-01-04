@@ -8,15 +8,15 @@
     </parent>
     <artifactId>jms-logger</artifactId>
     <name>Smava-JMS-Logger</name>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     
     
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
+        
         <dependency>
             <groupId>dev.abbasadel.smava</groupId>
             <artifactId>Core</artifactId>

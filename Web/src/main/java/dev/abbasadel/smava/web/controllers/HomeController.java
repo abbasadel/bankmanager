@@ -19,7 +19,7 @@ public class HomeController {
 
     Logger logger = Logger.getLogger(HomeController.class);
 
-    private static final String SESSION_USER_ACCOUNT_ID = "SESSION_USER_ACCOUNT_ID";
+    protected static final String SESSION_USER_ACCOUNT_ID = "SESSION_USER_ACCOUNT_ID";
 
     @Autowired
     UserAccountManager userAccountManager;
