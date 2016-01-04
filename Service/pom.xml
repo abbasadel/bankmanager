@@ -9,10 +9,7 @@
     <artifactId>Service</artifactId>
     <name>Smava-Service</name>
     <packaging>jar</packaging>
-    <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
+
     <dependencies>
         <dependency>
             <groupId>dev.abbasadel.smava</groupId>
@@ -24,7 +21,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-        
     
         
         <!-- JMS dependancies -->

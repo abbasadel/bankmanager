@@ -115,6 +115,11 @@ public class BankAccount implements Serializable {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "BankAccount{" + "bic=" + bic + ", iban=" + iban + '}';
+    }
+
     
     
 }

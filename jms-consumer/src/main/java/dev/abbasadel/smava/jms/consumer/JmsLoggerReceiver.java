@@ -1,5 +1,7 @@
 package dev.abbasadel.smava.jms.consumer;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
@@ -9,11 +11,12 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class JmsLoggerReceiver {
-    //Logger logger = Logger.getLogger(JmsLoggerReceiver.class );
-    
-    @JmsListener(destination = "logger.queue")
+    Logger logger = LoggerFactory.getLogger(JmsLoggerReceiver.class );
+
+
+    @JmsListener(destination = "audit.queue")
     public void receiveOrder(String message) {
-        //logger.debug(message);
-        System.out.println(message);
+        logger.info(message);
     }
+
 }

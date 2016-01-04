@@ -10,16 +10,16 @@ import org.springframework.stereotype.Service;
  * @author abbasadel
  */
 @Service
-public class JmsLoggerService implements LoggerService{
-    
-    private static final String SIMPLE_QUEUE = "logger.queue";
+public class JmsLoggerService implements LoggerService {
+
+    private static final String SIMPLE_QUEUE = "audit.queue";
 
     @Autowired
-     JmsTemplate jmsTemplate;
+    JmsTemplate jmsTemplate;
 
     @Override
     public void log(String message) {
         jmsTemplate.convertAndSend(SIMPLE_QUEUE, message);
     }
-    
+
 }
