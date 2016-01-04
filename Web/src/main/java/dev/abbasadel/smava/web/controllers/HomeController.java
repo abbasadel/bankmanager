@@ -1,6 +1,6 @@
 package dev.abbasadel.smava.web.controllers;
 
-import dev.abbasadel.smava.core.managers.UserAccountManager;
+import dev.abbasadel.smava.business.managers.UserAccountManager;
 import dev.abbasadel.smava.core.models.UserAccount;
 import java.util.Map;
 import javax.servlet.http.HttpSession;

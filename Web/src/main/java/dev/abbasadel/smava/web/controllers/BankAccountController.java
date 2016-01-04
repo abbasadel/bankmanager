@@ -5,9 +5,9 @@
  */
 package dev.abbasadel.smava.web.controllers;
 
+import dev.abbasadel.smava.business.managers.BankAccountManager;
+import dev.abbasadel.smava.business.managers.UserAccountManager;
 import dev.abbasadel.smava.core.exceptions.InvalidBankAccountException;
-import dev.abbasadel.smava.core.managers.BankAccountManager;
-import dev.abbasadel.smava.core.managers.UserAccountManager;
 import dev.abbasadel.smava.core.models.BankAccount;
 import dev.abbasadel.smava.core.models.UserAccount;
 import dev.abbasadel.smava.web.JsonResponse;
