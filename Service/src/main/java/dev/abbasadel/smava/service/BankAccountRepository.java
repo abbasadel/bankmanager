@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dev.abbasadel.smava.service;
 
 import dev.abbasadel.smava.core.models.BankAccount;
@@ -15,7 +10,7 @@ import org.springframework.stereotype.Repository;
  * @author abbasadel
  */
 @Repository
-public interface ExternalBankAccountService 
+public interface BankAccountRepository 
         extends BankAccountService, CrudRepository<BankAccount, Long>{
     
 }

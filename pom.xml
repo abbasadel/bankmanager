@@ -19,6 +19,7 @@
         <project.version>1.0-SNAPSHOT</project.version>
     </properties>
     
+    <!-- just for dependencies versions -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>

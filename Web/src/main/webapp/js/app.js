@@ -72,6 +72,7 @@ app.table.record = {
     },
     cancel: function (element) {
         this.override(element, app.bankAccountCopy);
+        this.readMode(element);
 
     },
     
