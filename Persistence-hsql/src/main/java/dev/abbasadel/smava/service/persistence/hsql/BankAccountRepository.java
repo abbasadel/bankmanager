@@ -1,4 +1,4 @@
-package dev.abbasadel.smava.service;
+package dev.abbasadel.smava.service.persistence.hsql;
 
 import dev.abbasadel.smava.core.models.BankAccount;
 import dev.abbasadel.smava.core.services.BankAccountService;

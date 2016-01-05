@@ -17,7 +17,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = WebApplication.class)
 @WebAppConfiguration
-public class BaseControllerTest {
+public abstract class BaseControllerTest {
 
     InternalResourceViewResolver viewResolver;
 

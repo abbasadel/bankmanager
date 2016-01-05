@@ -1,4 +1,4 @@
-package dev.abbasadel.smava.service;
+package dev.abbasadel.smava.service.jms;
 
 import dev.abbasadel.smava.core.services.LoggerService;
 import org.springframework.beans.factory.annotation.Autowired;
