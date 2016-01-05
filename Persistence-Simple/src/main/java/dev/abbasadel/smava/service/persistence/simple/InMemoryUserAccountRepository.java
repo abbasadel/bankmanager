@@ -27,7 +27,10 @@ public class InMemoryUserAccountRepository implements UserAccountService{
 
     @Override
     public <S extends UserAccount> S save(S entity) {
-        entity.setId(idGenerator.get());
+        if(entity.getId() == null || entity.getId() == 0){
+            entity.setId(idGenerator.getAndIncrement());
+        }
+        
         memory.put(entity.getId(), entity);
         return entity;
     }

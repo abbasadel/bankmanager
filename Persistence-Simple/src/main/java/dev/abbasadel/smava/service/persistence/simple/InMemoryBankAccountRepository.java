@@ -6,8 +6,10 @@ import dev.abbasadel.smava.core.models.UserAccount;
 import dev.abbasadel.smava.core.services.BankAccountService;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.stereotype.Service;
 
@@ -20,14 +22,16 @@ import org.springframework.stereotype.Service;
 public class InMemoryBankAccountRepository  implements BankAccountService{
     
     Map<Long,BankAccount> bankaccounts = new HashMap();
-    Map<Long,List<Long>> joinTable = new HashMap();
+    Map<Long,Set<Long>> joinTable = new HashMap();
     
     
     AtomicLong idGenerator = new AtomicLong(1);
 
     @Override
     public <S extends BankAccount> S save(S entity) {
-        entity.setId(idGenerator.get());
+        if(entity.getId() == null || entity.getId() == 0){
+            entity.setId(idGenerator.getAndIncrement());
+        }
         bankaccounts.put(entity.getId(), entity);
         joinWithUserAccount(entity);
         return entity;
@@ -84,7 +88,7 @@ public class InMemoryBankAccountRepository  implements BankAccountService{
 
     private <S extends BankAccount> void joinWithUserAccount(S entity) {
         if(entity.getUserAccount() != null){
-            List<Long> listOfBankAccounts = joinTable.getOrDefault(entity.getUserAccount().getId(), new ArrayList<Long>());
+            Set<Long> listOfBankAccounts = joinTable.getOrDefault(entity.getUserAccount().getId(), new HashSet<Long>());
             listOfBankAccounts.add(entity.getId());
             joinTable.put(entity.getUserAccount().getId(), listOfBankAccounts);
         }
@@ -92,7 +96,7 @@ public class InMemoryBankAccountRepository  implements BankAccountService{
 
     @Override
     public Iterable<BankAccount> findforUserAccount(UserAccount userAccount) {
-        List<Long> listOfBankAccountIds = joinTable.get(userAccount.getId());
+        Set<Long> listOfBankAccountIds = joinTable.get(userAccount.getId());
         return findAll(listOfBankAccountIds);
     }
     
