@@ -32,12 +32,12 @@ public class BankAccountController {
     @RequestMapping(method = RequestMethod.POST)
     public JsonResponse add(@RequestBody BankAccount bankAccount, HttpSession session) {
 
-        Long currentUserAccountId = (Long) session.getAttribute("SESSION_USER_ACCOUNT_ID");
+        Long currentUserAccountId = (Long) session.getAttribute(HomeController.SESSION_USER_ACCOUNT_ID);
         
         if(bankAccountManager.exists(bankAccount)){
             throw new InvalidBankAccountException("Bank Account Already Exists");
         }
-
+       
         if (currentUserAccountId != null) {
             UserAccount userAccount = userAccountManager.get(currentUserAccountId);
             bankAccount.setUserAccount(userAccount);

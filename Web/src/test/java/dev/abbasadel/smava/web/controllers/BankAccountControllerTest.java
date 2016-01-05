@@ -86,4 +86,21 @@ public class BankAccountControllerTest extends BaseControllerTest {
                 .andExpect(MockMvcResultMatchers.content().string(jsonResposne));
 
     }
+    
+    
+//    @Test
+//    public void invalidBankAccount() throws Exception {
+//
+//        BankAccount dummBankAccount = new BankAccount("xxx", "yyy");
+//        Mockito.when(bankAccountManager.exists(dummBankAccount)).thenReturn(false);
+//        Mockito.when(userAccountManager.get(Matchers.anyLong())).thenReturn(new UserAccount());
+//        Mockito.when(bankAccountManager.save(dummBankAccount)).thenThrow( new InvalidBankAccountException("IBAN/BIC are not valid"));
+//
+//        String jsonString = new ObjectMapper().writeValueAsString(dummBankAccount);
+//        String jsonResposne = new ObjectMapper().writeValueAsString(JsonResponse.make("Error Happened, Please try again later.", HttpStatus.EXPECTATION_FAILED));
+//        mockMvc.perform(post("/banks/accounts/")
+//                .sessionAttr(HomeController.SESSION_USER_ACCOUNT_ID, 101L)
+//                .contentType(MediaType.APPLICATION_JSON).content(jsonString))
+//                .andExpect(MockMvcResultMatchers.content().string(jsonResposne));
+//    }
 }
