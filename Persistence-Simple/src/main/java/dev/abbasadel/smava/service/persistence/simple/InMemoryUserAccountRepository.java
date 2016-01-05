@@ -38,7 +38,7 @@ public class InMemoryUserAccountRepository implements UserAccountService{
     @Override
     public UserAccount findOne(Long id) {
         UserAccount userAccount =  memory.get(id);
-        userAccount.setBankAccounts((List<BankAccount>)bankAccountService.findforUserAccount(userAccount));
+        userAccount.setBankAccounts((List<BankAccount>)bankAccountService.getByUserAccount(userAccount));
         return userAccount;
     }
 

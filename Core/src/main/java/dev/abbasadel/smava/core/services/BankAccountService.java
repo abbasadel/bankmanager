@@ -14,5 +14,5 @@ import org.springframework.data.repository.CrudRepository;
  * @author abbasadel
  */
 public interface BankAccountService extends CrudRepository<BankAccount, Long> {
-    Iterable<BankAccount> findforUserAccount(UserAccount userAccount);
+    Iterable<BankAccount> getByUserAccount(UserAccount userAccount);
 }

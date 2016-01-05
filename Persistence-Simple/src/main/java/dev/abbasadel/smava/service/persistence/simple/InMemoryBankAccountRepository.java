@@ -95,10 +95,12 @@ public class InMemoryBankAccountRepository  implements BankAccountService{
     }
 
     @Override
-    public Iterable<BankAccount> findforUserAccount(UserAccount userAccount) {
-        Set<Long> listOfBankAccountIds = joinTable.get(userAccount.getId());
+        public Iterable<BankAccount> getByUserAccount(UserAccount ua) {
+        Set<Long> listOfBankAccountIds = joinTable.get(ua.getId());
         return findAll(listOfBankAccountIds);
     }
+    
+    
     
         
     @Override
