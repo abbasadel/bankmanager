@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
  * @author abbasadel
  */
 @Repository
-public interface BankAccountRepository 
-        extends BankAccountService, CrudRepository<BankAccount, Long>{
+public abstract class BankAccountRepository 
+        implements BankAccountService, CrudRepository<BankAccount, Long>{
     
 }

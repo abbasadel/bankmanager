@@ -6,14 +6,14 @@
         <artifactId>BankManager</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>Service</artifactId>
+    <artifactId>service</artifactId>
     <name>Smava-Service</name>
     <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
             <groupId>dev.abbasadel.smava</groupId>
-            <artifactId>Core</artifactId>
+            <artifactId>core</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
                         
@@ -32,25 +32,6 @@
         </dependency>
         
         
-        <!-- Test -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-        </dependency>
         
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
 </project>

@@ -30,7 +30,7 @@ public class UserAccountManager {
         
         loggerService.log("New User created with id" + userAccount.getId());
         
-        userAccount.setBankAccounts(new ArrayList<>(3));
+        userAccount.setBankAccounts(new ArrayList(3));
         
         for(int i=0; i<3; i++){
             BankAccount bankAccount = bankAccountManager.generate();

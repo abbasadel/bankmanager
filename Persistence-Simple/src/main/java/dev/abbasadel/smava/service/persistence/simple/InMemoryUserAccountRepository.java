@@ -1,11 +1,15 @@
 
 package dev.abbasadel.smava.service.persistence.simple;
 
+import dev.abbasadel.smava.core.models.BankAccount;
 import dev.abbasadel.smava.core.models.UserAccount;
+import dev.abbasadel.smava.core.services.BankAccountService;
 import dev.abbasadel.smava.core.services.UserAccountService;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,6 +18,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class InMemoryUserAccountRepository implements UserAccountService{
+    
+    @Autowired
+    BankAccountService  bankAccountService;
 
     Map<Long,UserAccount> memory = new HashMap();
     AtomicLong idGenerator = new AtomicLong(1);
@@ -27,7 +34,9 @@ public class InMemoryUserAccountRepository implements UserAccountService{
 
     @Override
     public UserAccount findOne(Long id) {
-        return memory.remove(id);
+        UserAccount userAccount =  memory.get(id);
+        userAccount.setBankAccounts((List<BankAccount>)bankAccountService.findforUserAccount(userAccount));
+        return userAccount;
     }
 
     @Override
